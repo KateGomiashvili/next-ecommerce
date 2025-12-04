@@ -48,14 +48,14 @@ const Header = () => {
               id="dropdown"
               className="absolute left-[-30px] p-[20px] mt-0 bg-white border rounded-lg shadow-md hidden z-10 w-[300px] group-hover:block"
             >
-              <a href="products.html">
+              <a href="/">
                 <p className="font-semibold mb-2 cursor-pointer hover:text-blue-500">
                   All
                 </p>
               </a>
               <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                 {categories.map((cat) => (
-                  <a key={cat.slug} href={`/products?category=${cat.slug}`}>
+                  <a key={cat.slug} href={`/?category=${cat.slug}`}>
                     <p className="cursor-pointer hover:text-blue-500">
                       {cat.name}
                     </p>
@@ -65,20 +65,9 @@ const Header = () => {
             </div>
           </div>
 
-          <a href="#" className="text-gray-700 hover:text-blue-600 transition">
-            About
-          </a>
-          <a
-            href="./contact.html"
-            className="text-gray-700 hover:text-blue-600 transition"
-          >
-            Contact
-          </a>
+         
         </nav>
         <div className="flex items-center space-x-4 relative">
-          <button className="text-gray-700 hover:text-blue-600 transition">
-            <span className="material-symbols-outlined"> shopping_cart </span>
-          </button>
           <button className="text-gray-700 hover:text-blue-600 transition">
             <a href={`/favourites`}><span className="material-symbols-outlined">favorite</span></a>
           </button>

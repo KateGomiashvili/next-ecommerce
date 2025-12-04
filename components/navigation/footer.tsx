@@ -5,7 +5,7 @@ const Footer = () => {
         className="max-w-[1200px] mx-auto flex flex-col sm:flex-row flex-wrap justify-between items-start sm:items-center gap-8 px-6 text-black"
       >
         <div className="min-w-[200px]">
-          <a href="index.html" className="text-2xl font-bold text-blue-600"
+          <a href="/" className="text-2xl font-bold text-blue-600"
             >OnlineShop</a
           >
           <div>Online shop for everyone</div>
@@ -13,26 +13,23 @@ const Footer = () => {
 
         <div className="min-w-[150px]">
           <div className="font-bold mb-[5px]">Quick links</div>
-          <a href="index.html"
+          <a href="/"
             ><p className="hover:text-blue-600 transition">Home</p></a
           >
-          <a href="products.html"
+          <a href="/"
             ><p className="hover:text-blue-600 transition">Shop</p></a
-          >
-          <a href="about.html"
-            ><p className="hover:text-blue-600 transition">About</p></a
           >
         </div>
 
         <div className="min-w-[150px]">
           <div className="font-bold mb-[5px]">Shop</div>
-          <a href="products.html?category=beauty"
+          <a href="/?category=beauty"
             ><p className="hover:text-blue-600 transition">Beauty</p></a
           >
-          <a href="products.html?category=furniture"
+          <a href="/?category=furniture"
             ><p className="hover:text-blue-600 transition">Furniture</p></a
           >
-          <a href="products.html?category=fragrances"
+          <a href="/?category=fragrances"
             ><p className="hover:text-blue-600 transition">Fregnance</p></a
           >
         </div>

@@ -14,7 +14,7 @@ export default function Home() {
     }
   }, [loading, user]);
 
-  if (loading) return <p>Loading...</p>; // or skeleton
+  if (loading) return <p>Loading...</p>; 
 
   if (!user) return null;
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { getProductsPaginated, searchProducts } from "@/util/api";
+import { getProductsByCategory, getProductsPaginated, searchProducts } from "@/util/api";
 import { useEffect, useState } from "react";
 import Pagination from "../pagination/Pagination";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -12,6 +12,7 @@ export default function ProductsPage() {
   const searchParams = useSearchParams();
 
   const initialSearch = searchParams.get("search") || "";
+  const initialCategory = searchParams.get("category") || "";
 
   const [products, setProducts] = useState<Product[]>([]);
   const [page, setPage] = useState(1);
@@ -20,20 +21,33 @@ export default function ProductsPage() {
 
   const [search, setSearch] = useState(initialSearch);
   const [inputValue, setInputValue] = useState(initialSearch);
+  const [category, setCategory] = useState(initialCategory);
   
-  useEffect(() => {
-    const load = async () => {
-      if (search) {
-        const data = await searchProducts(search);
-        setProducts(data.products);
-      } else {
-        const data = await getProductsPaginated(page, 20);
-        setProducts(data.products);
-      }
-    };
+  
 
-    load();
-  }, [page, search]);
+  useEffect(() => {
+  const load = async () => {
+    let data;
+
+    if (search && category) {
+      const searchData = await searchProducts(search);
+      data = searchData.products.filter((p) => p.category === category);
+    } else if (search) {
+      const searchData = await searchProducts(search);
+      data = searchData.products;
+    } else if (category) {
+      const all = await getProductsByCategory(category)
+      data = all.products;
+    } else {
+      const all = await getProductsPaginated(page, 20);
+      data = all.products;
+    }
+
+    setProducts(data);
+  };
+
+  load();
+}, [page, search, category]);
 
   function handleSearch() {
     setSearch(inputValue); 
