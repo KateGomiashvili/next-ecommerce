@@ -1,11 +1,8 @@
 "use client"
-import Banner from "@/components/banner/Banner";
 import ProductsPage from "@/components/products/AllProducts";
-import TopProducts from "@/components/top/TopProducts";
 import { useUser } from "@/context/userContext";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { AiFillProduct } from "react-icons/ai";
 
 export default function Home() {
   const { user, loading } = useUser();
