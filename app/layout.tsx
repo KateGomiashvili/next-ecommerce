@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/navigation/header";
+import Footer from "@/components/navigation/footer";
+import { UserProvider } from "@/context/userContext";
+import { FavoritesProvider } from "@/context/favContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +28,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        />
+      </head>
+
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        {children}
+        <UserProvider>
+          <FavoritesProvider>
+            <Header />
+            <main className="flex-grow">{children}</main>
+          </FavoritesProvider>
+        </UserProvider>
+
+        <Footer />
       </body>
     </html>
   );
