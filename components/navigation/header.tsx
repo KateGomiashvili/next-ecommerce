@@ -24,7 +24,7 @@ const Header = () => {
  
   if (loading) return null;
 
-  // 🔐 If user is NOT logged in, don't show header  
+
   if (!user) return null;
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50">

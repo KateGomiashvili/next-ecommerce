@@ -2,13 +2,13 @@
 
 
 import { useFavorites } from "@/context/favContext";
+import { useUser } from "@/context/userContext";
 import { useEffect, useState } from "react";
 
 export default function FavoritesPage() {
   const { favorites, toggleFavorite } = useFavorites();
   const [favProducts, setFavProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-
   
   useEffect(() => {
     async function loadFavorites() {

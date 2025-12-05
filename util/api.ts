@@ -17,14 +17,10 @@ export async function getProductsPaginated(
 
   return res.json();
 }
-export async function searchProducts(
-  key: string,
-): Promise<PaginatedResponse> {
-
-  const res = await fetch(
-    `https://dummyjson.com/products/search?q=${key}`,
-    { cache: "no-store" }
-  );
+export async function searchProducts(key: string): Promise<PaginatedResponse> {
+  const res = await fetch(`https://dummyjson.com/products/search?q=${key}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch products");
@@ -33,16 +29,20 @@ export async function searchProducts(
   return res.json();
 }
 export async function getProductsByCategory(
-  key: string,
+  key: string
 ): Promise<PaginatedResponse> {
-  const res = await fetch(
-    `https://dummyjson.com/products/category/${key}`,
-    { cache: "no-store" }
-  );
+  const res = await fetch(`https://dummyjson.com/products/category/${key}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch products");
   }
 
+  return res.json();
+}
+export async function getSingleProduct(id: string) {
+  const res = await fetch(`https://dummyjson.com/products/${id}`);
+  if (!res.ok) throw new Error("Failed to load product");
   return res.json();
 }

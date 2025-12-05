@@ -21,7 +21,8 @@ export const UserProvider =  ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  // Load saved user
+
+  
   useEffect(() => {
   const saved = localStorage.getItem("user");
   if (saved) setUser(JSON.parse(saved));

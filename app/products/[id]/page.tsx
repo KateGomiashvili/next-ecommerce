@@ -1,23 +1,25 @@
 "use client";
 
 import Modal from "@/components/modals/confirmationModal";
-import ToastMessage from "@/components/ToastMessage";
 import { useFavorites } from "@/context/favContext";
 import { useUser } from "@/context/userContext";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 function ProductDetails() {
   const id = useParams().id;
   console.log(id);
   const [product, setProduct] = useState<Product>();
-  const { user, login, logout } = useUser();
+  const { user } = useUser();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { toggleFavorite, isFavorite } = useFavorites();
+  const {  isFavorite } = useFavorites();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const router = useRouter();
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,8 +31,7 @@ function ProductDetails() {
     fetchData();
   }, [id]);
 
-  if (!product) return null; // Handle loading state
-
+  if (!product) return null; 
   return (
     <>
       <div className="flex flex-col md:flex-row gap-10 max-w-[1200px] mx-auto p-6 mt-[70px]">
