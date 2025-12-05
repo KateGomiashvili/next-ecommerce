@@ -67,12 +67,12 @@ const Header = () => {
 
          
         </nav>
-        <div className="flex items-center space-x-4 relative">
-          <button className="text-gray-700 hover:text-blue-600 transition">
-            <a href={`/favourites`}><span className="material-symbols-outlined">favorite</span></a>
-          </button>
-          <p>{user?.username}</p>
-          <p onClick={logout}>Log Out</p>
+        <div className="flex justify-center items-center space-x-4 relative">
+          <div className="text-gray-700 block hover:text-blue-600 transition">
+            <a href={`/favourites`}><span className="material-symbols-outlined block mt-[10px]">favorite</span></a>
+          </div>
+          <div className="flex items-center gap-4"><p>{user?.username}</p>
+          <p onClick={logout} className="text-red-500 cursor-pointer">Log Out</p></div>
           <button
             id="menuBtn"
             className="md:hidden text-gray-700 hover:text-blue-600 transition"

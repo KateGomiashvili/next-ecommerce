@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/context/userContext"; // your context
+import { useUser } from "@/context/userContext"; 
 
 export default function LoginPage() {
   const router = useRouter();
@@ -18,8 +18,8 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      await login(username, password); // ⬅️ logs user using your context
-      router.push("/"); // ⬅️ REDIRECT TO HOME PAGE
+      await login(username, password); 
+      router.push("/"); 
     } catch (err) {
       setError("Invalid username or password");
     }
@@ -30,14 +30,14 @@ export default function LoginPage() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-[350px]">
-        <h2 className="text-xl font-bold mb-4">Login</h2>
+        <h2 className="text-xl font-bold mb-4 text-blue-600">Login</h2>
 
         {error && <p className="text-red-500 mb-2">{error}</p>}
 
         <input
           type="text"
           placeholder="Username"
-          className="border w-full p-2 mb-3"
+          className="border w-full p-2 mb-3 rounded"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -53,7 +53,7 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={loading}
-          className="bg-black text-white w-full py-2 rounded hover:bg-gray-800"
+          className="bg-blue-500 text-white w-full py-2 rounded hover:bg-blue-400"
         >
           {loading ? "Logging in..." : "Login"}
         </button>
